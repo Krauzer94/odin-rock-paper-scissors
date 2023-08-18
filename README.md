@@ -3,7 +3,7 @@
 ### Introduction
 We’re going to make a simple implementation of grade-school classic “rock paper scissors”. If you don’t know what that is check the [Wikipedia article](https://en.wikipedia.org/wiki/Rock_paper_scissors) or [this](https://www.wikihow.com/Play-Rock,-Paper,-Scissors) detailed step-by-step. For the moment we’re just going to play the game from the browser console, but **we will revisit this project in a later lesson and add a Graphical User Interface with buttons and text**, so don’t forget to keep the code on GitHub! You might notice some ‘Live Preview’ links in the student solutions that have a GUI - this is coming in a later lesson. When you get there don’t forget to come back and add your link!
 
-### Assingment
+## Assingment
 1. Start a new Git repo for your project.
 1. Create a blank HTML document with a script tag (Hint: it is best practice to link an external .js file). This game is going to be played completely from the console, so don’t worry about putting anything else in there.
 1. Your game is going to play against the computer, so begin with a function called <code>getComputerChoice</code> that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play. *Tip: use the console to make sure this is returning the expected output before moving to the next step!*
