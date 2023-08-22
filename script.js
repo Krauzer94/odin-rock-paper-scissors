@@ -5,16 +5,14 @@ function getComputerChoice() {
   return random;
 }
 
-// validating getComputerChoice
-// console.log(getComputerChoice());
-
 // Take player choice and computer choice in two parameters
 function gameMatchIf(playerSelection, computerSelection) {
-  computerSelection = getComputerChoice(); // Random choice
+  // computerSelection = getComputerChoice(); // Random choice
 
   let outcome = ""; // For later text return
   playerSelection = prompt("Rock, Paper or Scissors?");
 
+  // Conditionals for the result, there are 3 possible outcomes
   // Failure outcomes
   if (playerSelection === "Scissors" && computerSelection === "Rock") {
     outcome = console.log("You lose! Rock beats Scissors");
@@ -33,15 +31,16 @@ function gameMatchIf(playerSelection, computerSelection) {
   }
 
   return outcome;
-  // return computerSelection;
 }
 
 // Second atempt, now using case instead of if
 function gameMatchCase(playerSelection2, computerSelection2) {
-  computerSelection2 = getComputerChoice(); // Random choice
+  // computerSelection2 = getComputerChoice(); // Random choice
 
   let outcome2 = ""; // For later text return
   playerSelection2 = prompt("Rock, Paper or Scissors?");
+
+  // Conditionals for the result, there are 3 possible outcomes
   switch (playerSelection2) {
     case "Rock":
       if (computerSelection2 === "Scissors") {
@@ -62,14 +61,24 @@ function gameMatchCase(playerSelection2, computerSelection2) {
       }
       break;
     case "Scissors":
-        if (computerSelection2)
+      if (computerSelection2 === "Paper") {
+        outcome2 = console.log("You win! Scissors beats Paper");
+      } else if (computerSelection2 === "Rock") {
+        outcome2 = console.log("You lose! Rock beats Scissors");
+      } else {
+        outcome2 = console.log("Its a draw");
+      }
+      break;
   }
 
-  return outcome;
+  return outcome2;
 }
 console.log(getComputerChoice());
 // gameMatchElif();
 // gameMatchCase();
+
+let playerAnswer = outcome2;
+gameMatchCase(playerAnswer, getComputerChoice());
 
 // Simple example function for 3 outcomes
 function simpleChoice(choice) {
@@ -89,9 +98,3 @@ function simpleChoice(choice) {
 
   return text;
 }
-
-// validating simpleChoice;
-// simpleChoice();
-
-// Conditionals for the result, there are 3 possible outcomes
-// Return a string of success/failure depending on the choice
