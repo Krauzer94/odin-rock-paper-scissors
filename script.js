@@ -8,19 +8,41 @@ function getComputerChoice() {
 // Take player choice and computer choice in two parameters
 function playRound(playerSelection, computerSelection) {
   let outcome; // For later text return
-
+  playerSelection = prompt("Rock, Paper or Scissors?"); // user input
   // Conditionals for the result, there are 3 possible outcomes
-  if (computerSelection == "Scissors") {
-    return (outcome = "You win! Rock beats Scissors");
-  } else if (computerSelection == "Rock") {
-    return (outcome = "Draw");
-  } else if (computerSelection == "Paper") {
-    return (outcome = "You lose! Paper beats Rock");
+  switch (playerSelection) {
+    case "Rock":
+      if (computerSelection === "Rock") {
+        return (outcome = "Its a draw");
+      } else if (computerSelection === "Paper") {
+        return (outcome = "You lose! Paper beats rock");
+      } else if (computerSelection === "Scissors") {
+        return (outcome = "You win! Rock beats Scissors");
+      }
+      break;
+    case "Paper":
+      if (computerSelection === "Rock") {
+        return (outcome = "You win! Paper beats rock");
+      } else if (computerSelection === "Paper") {
+        return (outcome = "Its a draw");
+      } else if (computerSelection === "Scissors") {
+        return (outcome = "You lose! Scissors beats Paper");
+      }
+      break;
+    case "Scissors":
+      if (computerSelection === "Rock") {
+        return (outcome = "You lose! Rock beats Scissors");
+      } else if (computerSelection === "Paper") {
+        return (outcome = "You win! Scissors beats Paper");
+      } else if (computerSelection === "Scissors") {
+        return (outcome = "Its a draw");
+      }
+      break;
   }
 }
 
 // Validation using fixed outputs
-const playerSel = "Rock";
-const computerSel = getComputerChoice();
-console.log(computerSel);
-console.log(playRound(playerSel, computerSel));
+// const userSelection = "Rock";
+const randomSelection = getComputerChoice();
+console.log(randomSelection);
+console.log(playRound(userSelection, randomSelection));
