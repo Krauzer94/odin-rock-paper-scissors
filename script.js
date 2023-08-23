@@ -22,5 +22,5 @@ function playRound(playerSelection, computerSelection) {
 // Validation using fixed outputs
 const playerSel = "Rock";
 const computerSel = getComputerChoice();
-console.log(getComputerChoice());
+console.log(computerSel);
 console.log(playRound(playerSel, computerSel));
