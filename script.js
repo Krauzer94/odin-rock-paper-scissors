@@ -7,7 +7,8 @@ function getComputerChoice() {
 
 // Take player choice and computer choice in two parameters
 function playRound(playerSelection, computerSelection) {
-  let outcome; // For later text return
+  let outcome = ""; // For later text return
+
   // Conditionals for the result, there are 3 possible outcomes
   switch (playerSelection) {
     case "Rock":
@@ -40,8 +41,12 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Validation using fixed outputs
+// Find out the winner out of five rounds
+function game(humanScore, machineScore, winner) {
+  return console.log("Hello World");
+}
+
 const userSelection = prompt("Rock, Paper or Scissors?"); // user input
 const randomSelection = getComputerChoice(); // random input
-console.log(randomSelection);
+console.log(randomSelection); // validation log
 console.log(playRound(userSelection, randomSelection));
