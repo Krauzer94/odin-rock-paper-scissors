@@ -43,10 +43,16 @@ function playRound(playerSelection, computerSelection) {
 
 // Find out the winner out of five rounds
 function game(humanScore, machineScore, winner) {
-  return console.log("Hello World");
+  let roundCount = 1; // Round loop counter
+  let userSelection, randomSelection; // Inputs
+
+  do {
+    userSelection = prompt("Rock, Paper or Scissors?"); // user input
+    randomSelection = getComputerChoice(); // random input
+    console.log(randomSelection); // validation log
+    console.log(playRound(userSelection, randomSelection));
+    roundCount++;
+  } while (roundCount <= 5);
 }
 
-const userSelection = prompt("Rock, Paper or Scissors?"); // user input
-const randomSelection = getComputerChoice(); // random input
-console.log(randomSelection); // validation log
-console.log(playRound(userSelection, randomSelection));
+game();
