@@ -1,6 +1,7 @@
 // Randomly return a string between: Rock, Paper and Scissors
-function getComputerChoice() {
-  let options = ["Rock", "Paper", "Scissors"];
+
+function getComputerChoice() { // da pra refatorar
+  let options = ["Rock", "Paper", "Scissors"]; 
   const random = options[Math.floor(Math.random() * options.length)];
   return random;
 }
@@ -16,7 +17,7 @@ function playRound(playerSelection, computerSelection) {
         return (outcome = "Its a draw");
       } else if (computerSelection === "Paper") {
         return (outcome = "You lose! Paper beats rock");
-      } else if (computerSelection === "Scissors") {
+      } else if (computerSelection === "Scissors") { 
         return (outcome = "You win! Rock beats Scissors");
       }
       break;
@@ -42,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Find out the winner out of five rounds
-function game(humanScore, machineScore) {
+function game(humanScore, machineScore) { // parametros pra que?
   let winner = ""; // For later winner return
   let roundCount = 1; // Round loop counter
   (humanScore = 0), (machineScore = 0); // Scores
@@ -52,7 +53,7 @@ function game(humanScore, machineScore) {
     userSelection = prompt("Rock, Paper or Scissors?"); // user input
     randomSelection = getComputerChoice(); // random input
     console.log(randomSelection); // validation log
-    console.log(playRound(userSelection, randomSelection));
+    console.log(playRound(userSelection, randomSelection)); // console.log em produção?
     roundCount++;
 
     switch (userSelection) {
@@ -65,7 +66,7 @@ function game(humanScore, machineScore) {
           // Computer wins
           humanScore = humanScore;
           machineScore++;
-        } else if (randomSelection === "Scissors") {
+        } else if (randomSelection === "Scissors") { // n precisa desse else if na ultima condição
           // Player wins
           humanScore++;
           machineScore = machineScore;
@@ -115,11 +116,11 @@ function game(humanScore, machineScore) {
       `\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`
     );
     return (winner = "The winner is the COMPUTER");
-  } else if (humanScore === machineScore) {
+  } else if (humanScore === machineScore) { // nao precisa desse else if
     console.log(
       `\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`
     );
-    return (winner = "This game ended up a DRAW");
+    return (winner = "This game ended up a DRAW"); // retorna uma atribuição??????????????????????
   }
 }
 
