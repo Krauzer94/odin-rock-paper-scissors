@@ -42,9 +42,10 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Find out the winner out of five rounds
-function game(humanScore, machineScore, winner) {
+function game(humanScore, machineScore) {
+  let winner = ""; // For later winner return
   let roundCount = 1; // Round loop counter
-  (humanScore = 1), (machineScore = 1); // Scores
+  (humanScore = 0), (machineScore = 0); // Scores
   let userSelection, randomSelection; // Inputs
 
   do {
@@ -56,44 +57,70 @@ function game(humanScore, machineScore, winner) {
 
     switch (userSelection) {
       case "Rock":
-        if (randomSelection === "Rock") { // Its a draw
+        if (randomSelection === "Rock") {
+          // Its a draw
           humanScore = humanScore;
           machineScore = machineScore;
-        } else if (randomSelection === "Paper") { // Computer wins
+        } else if (randomSelection === "Paper") {
+          // Computer wins
           humanScore = humanScore;
           machineScore++;
-        } else if (randomSelection === "Scissors") { // Player wins
+        } else if (randomSelection === "Scissors") {
+          // Player wins
           humanScore++;
           machineScore = machineScore;
         }
         break;
       case "Paper":
-        if (randomSelection === "Rock") { // Player wins
+        if (randomSelection === "Rock") {
+          // Player wins
           humanScore++;
           machineScore = machineScore;
-        } else if (randomSelection === "Paper") { // Its a draw
+        } else if (randomSelection === "Paper") {
+          // Its a draw
           humanScore = humanScore;
           machineScore = machineScore;
-        } else if (randomSelection === "Scissors") { // Computer wins
+        } else if (randomSelection === "Scissors") {
+          // Computer wins
           humanScore = humanScore;
           machineScore++;
         }
         break;
       case "Scissors":
-        if (randomSelection === "Rock") { // Computer wins
+        if (randomSelection === "Rock") {
+          // Computer wins
           humanScore = humanScore;
           machineScore++;
-        } else if (randomSelection === "Paper") { // Player wins
+        } else if (randomSelection === "Paper") {
+          // Player wins
           humanScore++;
           machineScore = machineScore;
-        } else if (randomSelection === "Scissors") { // Its a draw
+        } else if (randomSelection === "Scissors") {
+          // Its a draw
           humanScore = humanScore;
           machineScore = machineScore;
         }
         break;
     }
   } while (roundCount <= 5);
+
+  // Winner outcome
+  if (humanScore > machineScore) {
+    console.log(
+      `\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`
+    );
+    return (winner = "The winner is the PLAYER");
+  } else if (humanScore < machineScore) {
+    console.log(
+      `\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`
+    );
+    return (winner = "The winner is the COMPUTER");
+  } else if (humanScore === machineScore) {
+    console.log(
+      `\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`
+    );
+    return (winner = "This game ended up a DRAW");
+  }
 }
 
-// console.log(`\n##########\nScore:\nPlayer: ${humanScore} | \tComputer: ${machineScore}\n##########\n`);
-game();
+console.log(game());
