@@ -7,7 +7,7 @@ function playRound(playerSelection, computerSelection) {
   let outcome = ""; // For later text return
   // Conditionals for the result, there are 3 possible outcomes
   switch (playerSelection) {
-    case "Rock":
+    case "rock":
       if (computerSelection === "Rock") {
         return (outcome = "Its a draw");
       } else if (computerSelection === "Paper") {
@@ -16,7 +16,7 @@ function playRound(playerSelection, computerSelection) {
         return (outcome = "You win! Rock beats Scissors");
       }
       break;
-    case "Paper":
+    case "raper":
       if (computerSelection === "Rock") {
         return (outcome = "You win! Paper beats rock");
       } else if (computerSelection === "Paper") {
@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
         return (outcome = "You lose! Scissors beats Paper");
       }
       break;
-    case "Scissors":
+    case "scissors":
       if (computerSelection === "Rock") {
         return (outcome = "You lose! Rock beats Scissors");
       } else if (computerSelection === "Paper") {
@@ -44,14 +44,14 @@ function game(humanScore, machineScore) {
   let userSelection, randomSelection; // Inputs
 
   do {
-    userSelection = prompt("Rock, Paper or Scissors?"); // user input
+    userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input
     randomSelection = getComputerChoice(); // random input
     // console.log(randomSelection); // validation log
     // console.log(playRound(userSelection, randomSelection));
     roundCount++;
 
     switch (userSelection) {
-      case "Rock":
+      case "rock":
         if (randomSelection === "Rock") {
           // Its a draw
           humanScore = humanScore;
@@ -66,7 +66,7 @@ function game(humanScore, machineScore) {
           machineScore = machineScore;
         }
         break;
-      case "Paper":
+      case "raper":
         if (randomSelection === "Rock") {
           // Player wins
           humanScore++;
@@ -81,7 +81,7 @@ function game(humanScore, machineScore) {
           machineScore++;
         }
         break;
-      case "Scissors":
+      case "scissors":
         if (randomSelection === "Rock") {
           // Computer wins
           humanScore = humanScore;
@@ -99,7 +99,7 @@ function game(humanScore, machineScore) {
     }
   } while (roundCount <= 5);
 
-  let winner = ""; // For later winner return
+  let winner = ""; // For later return
   // Winner outcome
   if (humanScore > machineScore) {
     console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
