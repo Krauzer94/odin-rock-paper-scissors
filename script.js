@@ -5,7 +5,6 @@ const getComputerChoice = () => options[Math.floor(Math.random() * options.lengt
 // Take player choice and computer choice in two parameters
 function playRound(playerSelection, computerSelection) {
   let outcome = ""; // For later text return
-
   // Conditionals for the result, there are 3 possible outcomes
   switch (playerSelection) {
     case "Rock":
@@ -55,37 +54,46 @@ function game(humanScore, machineScore) {
       case "Rock":
         if (randomSelection === "Rock") {
           // Its a draw
-          humanScore = humanScore, machineScore = machineScore;
+          humanScore = humanScore;
+          machineScore = machineScore;
         } else if (randomSelection === "Paper") {
           // Computer wins
+          humanScore = humanScore;
           machineScore++;
         } else if (randomSelection === "Scissors") {
           // Player wins
           humanScore++;
+          machineScore = machineScore;
         }
         break;
       case "Paper":
         if (randomSelection === "Rock") {
           // Player wins
           humanScore++;
+          machineScore = machineScore;
         } else if (randomSelection === "Paper") {
           // Its a draw
-          humanScore = humanScore, machineScore = machineScore;
+          humanScore = humanScore;
+          machineScore = machineScore;
         } else if (randomSelection === "Scissors") {
           // Computer wins
+          humanScore = humanScore;
           machineScore++;
         }
         break;
       case "Scissors":
         if (randomSelection === "Rock") {
           // Computer wins
+          humanScore = humanScore;
           machineScore++;
         } else if (randomSelection === "Paper") {
           // Player wins
           humanScore++;
+          machineScore = machineScore;
         } else if (randomSelection === "Scissors") {
           // Its a draw
-          humanScore = humanScore, machineScore = machineScore;
+          humanScore = humanScore;
+          machineScore = machineScore;
         }
         break;
     }
