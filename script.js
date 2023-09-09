@@ -44,7 +44,7 @@ function game(humanScore, machineScore) {
   let userSelection, randomSelection; // Inputs
 
   do {
-    userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input
+    // userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input
     randomSelection = getComputerChoice(); // random input
     // console.log(randomSelection); // validation log
     // console.log(playRound(userSelection, randomSelection));
