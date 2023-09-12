@@ -2,7 +2,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    border: 1px solid red;
 }
 
 body {
@@ -13,10 +12,10 @@ body {
 }
 
 /* Header and footer */
-.header, .footer {
+.header,
+.footer {
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 12px 0px;
 }
 
@@ -41,12 +40,14 @@ footer h1 {
 }
 
 /* Middle sections */
-.options, .conditions {
-    padding: 0;
+.options,
+.conditions {
+    padding: 46px 0px;
 }
 
 /* Options section */
-.options, .cards {
+.options,
+.cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -56,14 +57,16 @@ footer h1 {
 }
 
 /* Options and Conditions headers */
-.options h1, .conditions h1 {
+.options h1,
+.conditions h1 {
     font-size: 28px;
     width: 100%;
     font-weight: normal;
 }
 
 /* Options cards */
-.card, button {
+.card,
+button {
     border-radius: 20px;
     width: 150px;
     height: 150px;
