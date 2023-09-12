@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    border: 1px solid red;
 }
 
 body {
@@ -11,42 +12,11 @@ body {
     padding: 0;
 }
 
-/* Wraps middle section */
-.container {
-    background-color: #222831;
+/* Header and footer */
+.header, .footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-}
-
-.card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 52px;
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
-    background-color: #393e46;
-}
-
-/* Choices cards */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 52px;
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
-    background-color: #393e46;
-}
-
-/* General text */
-p, h1, h2, h3 {
-    color: #F2F2F2;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 24px 24px;
 }
 
 /* Header text */
@@ -55,9 +25,68 @@ p, h1, h2, h3 {
     font-weight: normal;
 }
 
-/* Copyright footer */
-footer h3 {
+/* Footer text */
+footer h1 {
+    font-size: 18px;
     font-weight: normal;
+}
+
+/* Main container */
+.container {
+    background-color: #222831;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Middle sections */
+.options, .conditions {
+    padding: 64px 0px;
+}
+
+/* Options section */
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    height: 100%;
+    width: 100%;
+}
+
+/* Options and Conditions headers */
+.options h1, .conditions h1 {
+    font-size: 28px;
+    width: 100%;
+    font-weight: normal;
+}
+
+/* Options cards */
+.cards, button {
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: #393e46;
+}
+
+/* Conditions sections */
+.conditions {
+    width: 100%;
+}
+
+.score {
+    flex-direction: row;
+}
+
+/* General text */
+p, h1, h2, h3 {
+    color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 24px 0px;
 }
 
 /* Emoji images */
