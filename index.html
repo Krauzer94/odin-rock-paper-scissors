@@ -19,21 +19,30 @@
         <div class="options">
             <h1>There are three possible choises</h1>
             <div class="cards">
-                <button><img src="images/rock.png" alt="rock_button"></button>
-            </div>
-            <div class="cards">
-                <button><img src="images/paper.png" alt="paper_button"></button>
-            </div>
-            <div class="cards">
-                <button><img src="images/scissor.png" alt="scissors_button"></button>
+                <div class="card">
+                    <button><img src="images/rock.png" alt="rock_button"></button>
+                </div>
+                <div class="card">
+                    <button><img src="images/paper.png" alt="paper_button"></button>
+                </div>
+                <div class="card">
+                    <button><img src="images/scissor.png" alt="scissors_button"></button>
+                </div>
             </div>
         </div>
         <div class="conditions">
             <h1>Winning condition: reach 5 points</h1>
             <!-- Status of actual score -->
             <div class="score">
-                <p>Human: 0</p>
-                <p>Machine: 0</p>
+                <!-- Choices made by the players -->
+                <div class="human-choice">
+                    <img src="images/choice.png" alt="human_choice">
+                    <p>Human: 0</p>
+                </div>
+                <div class="computer-choice">
+                    <img src="images/choice.png" alt="computer_choice">
+                    <p>Machine: 0</p>
+                </div>
             </div>
         </div>
         <!-- Emoji cards for choices -->
