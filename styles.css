@@ -12,20 +12,19 @@ body {
 }
 
 /* Header and footer */
-.header,
-.footer {
+.header, .footer {
     display: flex;
     justify-content: center;
     padding: 12px 0px;
 }
 
-/* Header text */
+/* Header title */
 .header h1 {
     font-size: 48px;
     font-weight: normal;
 }
 
-/* Footer text */
+/* Footer title */
 footer h1 {
     font-size: 18px;
     font-weight: normal;
@@ -34,60 +33,42 @@ footer h1 {
 /* Main container */
 .container {
     background-color: #222831;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
 }
 
 /* Middle sections */
-.options,
-.conditions {
+.options, .conditions {
     padding: 46px 0px;
 }
 
 /* Options section */
-.options,
-.cards {
+.options {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 48px;
-    height: 100%;
-    width: 100%;
 }
 
-/* Options and Conditions headers */
-.options h1,
-.conditions h1 {
+/* Section headers */
+.options h1, .conditions h1 {
     font-size: 28px;
     width: 100%;
     font-weight: normal;
 }
 
 /* Options cards */
-.card,
-button {
+.card, button {
+    background-color: #393e46;
+    border-style: none;
     border-radius: 20px;
     width: 150px;
     height: 150px;
-    background-color: #393e46;
-    border-style: none;
-}
-
-/* Conditions sections */
-.conditions {
-    width: 100%;
-    height: 100%;
 }
 
 /* Score section */
 .score {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 48px;
-    height: 100%;
-    width: 100%;
 }
 
 /* Score images */
@@ -99,7 +80,6 @@ button {
 /* General text */
 p, h1 {
     color: #F2F2F2;
-    display: flex;
     justify-content: center;
     text-align: center;
     padding: 24px 0px;
