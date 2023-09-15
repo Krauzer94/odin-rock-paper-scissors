@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 }
-
+/*
 // Find out the winner out of five rounds
 function game(humanScore, machineScore) {
   let roundCount = 1; // Round loop counter
@@ -114,3 +114,14 @@ function game(humanScore, machineScore) {
 }
 
 console.log(game());
+*/
+
+const card = document.querySelector('.card');
+
+// Buttons events
+const choices = document.querySelectorAll('button');
+choices.forEach((choice) => {
+  choice.addEventListener('click', () => {
+    alert(choice.className);
+  });
+});

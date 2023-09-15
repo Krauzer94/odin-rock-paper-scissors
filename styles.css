@@ -58,7 +58,7 @@ footer h1 {
 /* Options cards */
 .card, button {
     background-color: #393e46;
-    border-style: none;
+    /* border-style: none; */
     border-radius: 20px;
     width: 150px;
     height: 150px;
