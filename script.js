@@ -36,6 +36,8 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 }
+
+// Removed the logic for the 5 round game
 /*
 // Find out the winner out of five rounds
 function game(humanScore, machineScore) {
@@ -116,12 +118,8 @@ function game(humanScore, machineScore) {
 console.log(game());
 */
 
-const card = document.querySelector('.card');
-
-// Buttons events
-const choices = document.querySelectorAll('button');
-choices.forEach((choice) => {
-  choice.addEventListener('click', () => {
-    alert(choice.className);
-  });
-});
+const rockButton = document.getElementById('#rock_button');
+const paperButton = document.getElementById('#paper_button');
+const scissorButton = document.getElementById('#scissor_button');
+const choiceButton = document.querySelectorAll('.cardButton').textContent;
+const choiceEmoji = document.querySelectorAll('.choiceEmoji').textContent;

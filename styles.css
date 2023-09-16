@@ -62,6 +62,7 @@ footer h1 {
     border-radius: 20px;
     width: 150px;
     height: 150px;
+    font-size: 85px;
 }
 
 /* Score section */
@@ -85,8 +86,7 @@ p, h1 {
     padding: 24px 0px;
 }
 
-/* Emoji images */
-img {
-    height: 100px;
-    width: 100px;
+/* Condition emoji texts */
+.choiceEmoji {
+    font-size: 90px;
 }
