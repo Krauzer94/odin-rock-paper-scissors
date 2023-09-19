@@ -2,6 +2,8 @@
 const options = ["Rock", "Paper", "Scissors"];
 const getComputerChoice = () => options[Math.floor(Math.random() * options.length)];
 
+// Removed the logic to play a single round
+/*
 // Take player choice and computer choice in two parameters
 function playRound(playerSelection, computerSelection) {
   let outcome = ""; // For later text return
@@ -36,6 +38,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 }
+*/
 
 // Removed the logic for the 5 round game
 /*
@@ -118,12 +121,36 @@ function game(humanScore, machineScore) {
 console.log(game());
 */
 
-// Buttons for the player to press
-const rockButton = document.querySelector('#rock_button');
-const paperButton = document.querySelector('#paper_button');
-const scissorButton = document.querySelector('#scissor_button');
-const humanChoice = document.querySelector('#human_choice');
+// Gets 🪨, 📄 and ✂️ emojis
+const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
+const paperButton = document.querySelector('#paper_button'); // 📄 emoji
+const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 
-rockButton.addEventListener('click', () => {
-  humanChoice.textContent = rockButton.textContent;
+// Gets ❓ emojis
+const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
+const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
+
+// Changes computer ❓ emoji
+function changeComputerChoice () {
+  let machinePlay = getComputerChoice();
+  switch (machinePlay) {
+    case 'Rock':
+      computerChoice.textContent = '🪨';
+      break;
+    case 'Paper':
+      computerChoice.textContent = '📄';
+      break;
+    case 'Scissors':
+      computerChoice.textContent = '✂️';
+      break;
+  }
+}
+
+// Changes both computer and human ❓ emoji
+const cardButtons = document.querySelectorAll('.cardButton');
+cardButtons.forEach((button) => { // Gets card button contents
+  button.addEventListener("click", () => {
+    humanChoice.textContent = button.textContent; // Change human choice emoji
+    changeComputerChoice(); // Change computer choice emoji
+  });
 });
