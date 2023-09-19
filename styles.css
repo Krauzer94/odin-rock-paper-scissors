@@ -85,3 +85,7 @@ p, h1 {
     text-align: center;
     padding: 24px 0px;
 }
+
+.red-emoji {
+    font-size: 90px;
+}

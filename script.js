@@ -130,7 +130,7 @@ const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
 const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
 
-// Changes computer ❓ emoji
+// Sets computer ❓ emoji
 function changeComputerChoice () {
   let machinePlay = getComputerChoice();
   switch (machinePlay) {
