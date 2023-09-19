@@ -1,9 +1,50 @@
+// Gets 🪨, 📄 and ✂️ emojis
+const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
+const paperButton = document.querySelector('#paper_button'); // 📄 emoji
+const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
+
+// Gets ❓ emojis
+const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
+const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
+
 // Random choices for the computer to play
 const options = ["Rock", "Paper", "Scissors"];
 const getComputerChoice = () => options[Math.floor(Math.random() * options.length)];
 
-// Removed the logic to play a single round
-/*
+// Sets computer ❓ emoji
+function changeComputerEmoji () {
+  let machinePlay = getComputerChoice();
+  switch (machinePlay) {
+    case 'Rock':
+      computerChoice.textContent = '🪨';
+      break;
+    case 'paper':
+      computerChoice.textContent = '📄';
+      break;
+    case 'Scissors':
+      computerChoice.textContent = '✂️';
+      break;
+  }
+}
+
+// Find out player choice on button.click
+function playerRoundChoice () {
+  let playMade;
+  humanPlay = humanChoice.textContent;
+  switch (humanPlay) {
+    case '🪨':
+      playMade = 'rock';
+      break;
+    case '📄':
+      playMade = 'paper';
+      break;
+    case '✂️':
+      playMade = 'scissors';
+      break;
+  }
+  return playMade;
+}
+
 // Take player choice and computer choice in two parameters
 function playRound(playerSelection, computerSelection) {
   let outcome = ""; // For later text return
@@ -18,7 +59,7 @@ function playRound(playerSelection, computerSelection) {
         return (outcome = "You win! Rock beats Scissors");
       }
       break;
-    case "raper":
+    case "paper":
       if (computerSelection === "Rock") {
         return (outcome = "You win! Paper beats rock");
       } else if (computerSelection === "Paper") {
@@ -38,10 +79,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
 }
-*/
 
-// Removed the logic for the 5 round game
-/*
 // Find out the winner out of five rounds
 function game(humanScore, machineScore) {
   let roundCount = 1; // Round loop counter
@@ -49,7 +87,8 @@ function game(humanScore, machineScore) {
   let userSelection, randomSelection; // Inputs
 
   do {
-    // userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input
+    // userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input   
+    userSelection = playerRoundChoice();
     randomSelection = getComputerChoice(); // random input
     // console.log(randomSelection); // validation log
     // console.log(playRound(userSelection, randomSelection));
@@ -71,7 +110,7 @@ function game(humanScore, machineScore) {
           machineScore = machineScore;
         }
         break;
-      case "raper":
+      case "paper":
         if (randomSelection === "Rock") {
           // Player wins
           humanScore++;
@@ -118,39 +157,13 @@ function game(humanScore, machineScore) {
   }
 }
 
-console.log(game());
-*/
-
-// Gets 🪨, 📄 and ✂️ emojis
-const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
-const paperButton = document.querySelector('#paper_button'); // 📄 emoji
-const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
-
-// Gets ❓ emojis
-const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
-const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
-
-// Sets computer ❓ emoji
-function changeComputerChoice () {
-  let machinePlay = getComputerChoice();
-  switch (machinePlay) {
-    case 'Rock':
-      computerChoice.textContent = '🪨';
-      break;
-    case 'Paper':
-      computerChoice.textContent = '📄';
-      break;
-    case 'Scissors':
-      computerChoice.textContent = '✂️';
-      break;
-  }
-}
-
 // Changes both computer and human ❓ emoji
 const cardButtons = document.querySelectorAll('.cardButton');
 cardButtons.forEach((button) => { // Gets card button contents
   button.addEventListener("click", () => {
     humanChoice.textContent = button.textContent; // Change human choice emoji
-    changeComputerChoice(); // Change computer choice emoji
+    changeComputerEmoji(); // Change computer choice emoji
+    playerRoundChoice(); // Player choice for the round
+    game(); // Five round match call
   });
 });
