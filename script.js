@@ -118,8 +118,12 @@ function game(humanScore, machineScore) {
 console.log(game());
 */
 
-const rockButton = document.getElementById('#rock_button');
-const paperButton = document.getElementById('#paper_button');
-const scissorButton = document.getElementById('#scissor_button');
-const choiceButton = document.querySelectorAll('.cardButton').textContent;
-const choiceEmoji = document.querySelectorAll('.choiceEmoji').textContent;
+// Buttons for the player to press
+const rockButton = document.querySelector('#rock_button');
+const paperButton = document.querySelector('#paper_button');
+const scissorButton = document.querySelector('#scissor_button');
+const humanChoice = document.querySelector('#human_choice');
+
+rockButton.addEventListener('click', () => {
+  humanChoice.textContent = rockButton.textContent;
+});
