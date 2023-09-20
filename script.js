@@ -1,9 +1,7 @@
-// Gets 🪨, 📄 and ✂️ emojis
+// Gets information regarding button emoji contents
 const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
 const paperButton = document.querySelector('#paper_button'); // 📄 emoji
 const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
-
-// Gets ❓ emojis
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
 const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
 
@@ -11,15 +9,17 @@ const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ em
 const options = ["Rock", "Paper", "Scissors"];
 const getComputerChoice = () => options[Math.floor(Math.random() * options.length)];
 
-// Sets computer ❓ emoji
-function changeComputerEmoji () {
+// Gets play made by the computer and updates the UI
+function getComputerPlay () {
   let machinePlay = getComputerChoice();
   switch (machinePlay) {
     case 'Rock':
       computerChoice.textContent = '🪨';
+      randomPlayMade = '🪨';
       break;
-    case 'paper':
+    case 'Paper':
       computerChoice.textContent = '📄';
+      randomPlayMade = '📄';
       break;
     case 'Scissors':
       computerChoice.textContent = '✂️';
@@ -27,71 +27,56 @@ function changeComputerEmoji () {
   }
 }
 
-// Find out player choice on button.click
-function playerRoundChoice () {
-  let playMade;
-  humanPlay = humanChoice.textContent;
-  switch (humanPlay) {
+// Take player choice and computer choice in two parameters
+function playOneRound(playerSelection, computerSelection) {
+  let roundOutome; // Return the outcome of the round
+  playerSelection = humanChoice.textContent; // Gets human play
+  computerSelection = computerChoice.textContent; // Gets computer play
+
+  // Conditionals for the result, there are 3 possible roundOutomes
+  switch (playerSelection) {
     case '🪨':
-      playMade = 'rock';
+      if (computerSelection === '🪨') {
+        roundOutome = "Its a draw";
+      } else if (computerSelection === '📄') {
+        roundOutome = "You lose! Paper beats rock";
+      } else if (computerSelection === '✂️') {
+        roundOutome = "You win! Rock beats Scissors";
+      }
       break;
     case '📄':
-      playMade = 'paper';
+      if (computerSelection === '🪨') {
+        roundOutome = "You win! Paper beats rock";
+      } else if (computerSelection === '📄') {
+        roundOutome = "Its a draw";
+      } else if (computerSelection === '✂️') {
+        roundOutome = "You lose! Scissors beats Paper";
+      }
       break;
     case '✂️':
-      playMade = 'scissors';
+      if (computerSelection === '🪨') {
+        roundOutome = "You lose! Rock beats Scissors";
+      } else if (computerSelection === '📄') {
+        roundOutome = "You win! Scissors beats Paper";
+      } else if (computerSelection === '✂️') {
+        roundOutome = "Its a draw";
+      }
       break;
   }
-  return playMade;
-}
 
-// Take player choice and computer choice in two parameters
-function playRound(playerSelection, computerSelection) {
-  let outcome = ""; // For later text return
-  // Conditionals for the result, there are 3 possible outcomes
-  switch (playerSelection) {
-    case "rock":
-      if (computerSelection === "Rock") {
-        return (outcome = "Its a draw");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "You lose! Paper beats rock");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "You win! Rock beats Scissors");
-      }
-      break;
-    case "paper":
-      if (computerSelection === "Rock") {
-        return (outcome = "You win! Paper beats rock");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "Its a draw");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "You lose! Scissors beats Paper");
-      }
-      break;
-    case "scissors":
-      if (computerSelection === "Rock") {
-        return (outcome = "You lose! Rock beats Scissors");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "You win! Scissors beats Paper");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "Its a draw");
-      }
-      break;
-  }
+  alert(roundOutome);
+  return roundOutome;
 }
 
 // Find out the winner out of five rounds
-function game(humanScore, machineScore) {
+function playFiveRounds(humanScore, machineScore) {
   let roundCount = 1; // Round loop counter
   humanScore = 0, machineScore = 0; // Scores
   let userSelection, randomSelection; // Inputs
 
   do {
-    // userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input   
-    userSelection = playerRoundChoice();
-    randomSelection = getComputerChoice(); // random input
-    // console.log(randomSelection); // validation log
-    // console.log(playRound(userSelection, randomSelection));
+    userSelection = humanChoice.textContent;
+    randomSelection = computerChoice.textContent; // random input
     roundCount++;
 
     switch (userSelection) {
@@ -144,26 +129,27 @@ function game(humanScore, machineScore) {
   } while (roundCount <= 5);
 
   let winner = ""; // For later return
-  // Winner outcome
+  // Winner roundOutome
   if (humanScore > machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     return (winner = "The winner is the PLAYER");
   } else if (humanScore < machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     return (winner = "The winner is the COMPUTER");
   } else if (humanScore === machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
-    return (winner = "This game ended up a DRAW");
+    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+    return (winner = "This round ended up a DRAW");
   }
 }
 
-// Changes both computer and human ❓ emoji
+// Trigger several functions in order to play a round
 const cardButtons = document.querySelectorAll('.cardButton');
-cardButtons.forEach((button) => { // Gets card button contents
+cardButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    humanChoice.textContent = button.textContent; // Change human choice emoji
-    changeComputerEmoji(); // Change computer choice emoji
-    playerRoundChoice(); // Player choice for the round
-    game(); // Five round match call
+    humanChoice.textContent = button.textContent; // Sets new emoji for human
+    // getHumanPlay(); // Gets value of player choice
+    getComputerPlay(); // Gets value of computer choice
+    playOneRound(); // Gets the roundOutome of a single round
+    playFiveRounds(); // Gets the roundOutome of five rounds
   });
 });
