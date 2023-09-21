@@ -10,7 +10,7 @@ const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
 const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
 
-// TODO Query selectors for the "Human: 0" and "Machine: 0" elements
+// TODO: Query selectors for the "Human: 0" and "Machine: 0" elements
 
 // Random choices for the computer to play
 const options = ["Rock", "Paper", "Scissors"];
@@ -37,6 +37,7 @@ function playOneRound(playerSelection, computerSelection) {
   let roundOutome; // Return the outcome of the round
 
   // Conditionals for the result, with 3 possible outomes
+  // TODO: Update the "Human: 0" and "Machine: 0" elements
   switch (playerSelection) {
     case "🪨":
       if (computerSelection === "🪨") {
@@ -113,10 +114,10 @@ function resetEntireGame() {
 }
 
 // UI reset for the score and choice emojis
-function resetGameUI () {
+function resetGameUI() {
   humanChoice.textContent = '❓';
   computerChoice.textContent = '❓';
-  // TODO: Reset the UI for the scores
+  // TODO: Reset the UI for the scores and choice emojis
 }
 
 // Trigger several functions in order to play a round
@@ -130,7 +131,7 @@ cardButtons.forEach((button) => {
     // Gets the winner and resets the game
     if (humanScore === 3 || machineScore === 3) {
       getsGameWinner(); // Displays the winner
-      // resetEntireGame(); // Zeroes the scores // ! Umcomment this when done
+      // resetEntireGame(); // Zeroes the scores // TODO: Umcomment resetEntireGame when done
       resetGameUI() // Resets scores and emojis
     }
   });
