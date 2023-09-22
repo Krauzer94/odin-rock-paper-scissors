@@ -4,7 +4,7 @@ let machineScore = 0;
 let roundWinner = '';
 
 // Emoji elements queries
-const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
+const rockButton = document.querySelector('#rock_button'); // 🗿 emoji
 const paperButton = document.querySelector('#paper_button'); // 📄 emoji
 const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
@@ -23,7 +23,7 @@ function getComputerPlay() {
   let machinePlay = getComputerChoice();
   switch (machinePlay) {
     case "Rock":
-      computerChoice.textContent = "🪨";
+      computerChoice.textContent = "🗿";
       break;
     case "Paper":
       computerChoice.textContent = "📄";
@@ -40,8 +40,8 @@ function playOneRound(playerSelection, computerSelection) {
 
   // Conditions for winning and update the players' score points
   switch (playerSelection) {
-    case "🪨":
-      if (computerSelection === "🪨") {
+    case "🗿":
+      if (computerSelection === "🗿") {
         roundOutome = "Its a draw";
         roundWinner = "nobody";
       } else if (computerSelection === "📄") {
@@ -57,7 +57,7 @@ function playOneRound(playerSelection, computerSelection) {
       machinePoints.textContent = `Machine: ${machineScore}`;
       break;
     case "📄":
-      if (computerSelection === "🪨") {
+      if (computerSelection === "🗿") {
         roundOutome = "You win! Paper beats rock";
         roundWinner = "human";
         humanScore++;
@@ -73,7 +73,7 @@ function playOneRound(playerSelection, computerSelection) {
       machinePoints.textContent = `Machine: ${machineScore}`;
       break;
     case "✂️":
-      if (computerSelection === "🪨") {
+      if (computerSelection === "🗿") {
         roundOutome = "You lose! Rock beats Scissors";
         roundWinner = "machine"
         machineScore++;

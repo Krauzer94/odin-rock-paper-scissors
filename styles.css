@@ -56,7 +56,7 @@ footer h1 {
 }
 
 /* Options cards */
-.card, button {
+button {
     background-color: #393e46;
     border-radius: 20px;
     width: 150px;
