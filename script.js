@@ -10,7 +10,9 @@ const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
 const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
 
-// TODO: Query selectors for the "Human: 0" and "Machine: 0" elements
+// Query for the Human and Machine points
+const humanPoints = document.querySelector('#human_score'); // Human points
+const machinePoints = document.querySelector('#machine_score') // Machine points
 
 // Random choices for the computer to play
 const options = ["Rock", "Paper", "Scissors"];
@@ -52,6 +54,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundWinner = "human";
         humanScore++;
       }
+      humanPoints.textContent = `Human: ${humanScore}`
+      machinePoints.textContent = `Human: ${machineScore}`
       break;
     case "📄":
       if (computerSelection === "🪨") {
@@ -66,6 +70,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundWinner = "machine";
         machineScore++;
       }
+      humanPoints.textContent = `Human: ${humanScore}`
+      machinePoints.textContent = `Human: ${machineScore}`
       break;
     case "✂️":
       if (computerSelection === "🪨") {
@@ -80,6 +86,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundOutome = "Its a draw";
         roundWinner = "nobody";
       }
+      humanPoints.textContent = `Human: ${humanScore}`
+      machinePoints.textContent = `Human: ${machineScore}`
       break;
   }
 
@@ -92,10 +100,10 @@ function getsGameWinner() {
   let gameWinner = ''; // For later return
 
   // Alerts who the winner is
-  if (humanScore === 3) {
+  if (humanScore === 5) {
     console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     gameWinner = "The winner is the PLAYER";
-  } else if (machineScore === 3) {
+  } else if (machineScore === 5) {
     console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     gameWinner = "The winner is the COMPUTER";
   } else if (humanScore === machineScore) {
@@ -129,7 +137,7 @@ cardButtons.forEach((button) => {
     playOneRound(humanChoice.textContent, computerChoice.textContent); // Play one round
     console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     // Gets the winner and resets the game
-    if (humanScore === 3 || machineScore === 3) {
+    if (humanScore === 5 || machineScore === 5) {
       getsGameWinner(); // Displays the winner
       // resetEntireGame(); // Zeroes the scores // TODO: Umcomment resetEntireGame when done
       resetGameUI() // Resets scores and emojis
