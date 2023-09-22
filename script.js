@@ -98,9 +98,9 @@ function playOneRound(playerSelection, computerSelection) {
 function getsGameWinner() {
   let gameWinner = '';
 
-  if (humanScore === 2) {
+  if (humanScore === 5) {
     gameWinner = "The winner is the PLAYER";
-  } else if (machineScore === 2) {
+  } else if (machineScore === 5) {
     gameWinner = "The winner is the COMPUTER";
   } else if (humanScore === machineScore) {
     gameWinner = "This game ended up a DRAW";
@@ -131,7 +131,7 @@ cardButtons.forEach((button) => {
     getComputerPlay(); // Gets value of computer choice
     playOneRound(humanChoice.textContent, computerChoice.textContent); // Plays one round
     // Gets the winner and resets the game
-    if (humanScore === 2 || machineScore === 2) {
+    if (humanScore === 5 || machineScore === 5) {
       getsGameWinner(); // Displays the winner
       resetEntireGame(); // Zeroes the scores
       resetGameUI() // Resets the scores and UI
