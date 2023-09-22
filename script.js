@@ -3,22 +3,22 @@ let humanScore = 0;
 let machineScore = 0;
 let roundWinner = '';
 
-// Query selectors for the emoji elements
+// Emoji elements queries
 const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
 const paperButton = document.querySelector('#paper_button'); // 📄 emoji
 const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
 const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
 const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
 
-// Query for the Human and Machine points
+// Score points queries
 const humanPoints = document.querySelector('#human_score'); // Human points
 const machinePoints = document.querySelector('#machine_score') // Machine points
 
-// Random choices for the computer to play
+// Computer random choice
 const options = ["Rock", "Paper", "Scissors"];
 const getComputerChoice = () => options[Math.floor(Math.random() * options.length)];
 
-// Gets play made by the computer and updates the UI
+// Gets computer play and updates the UI with it
 function getComputerPlay() {
   let machinePlay = getComputerChoice();
   switch (machinePlay) {
@@ -34,12 +34,11 @@ function getComputerPlay() {
   }
 }
 
-// Take player choice and computer choice in two parameters
+// Play a round and show round winner
 function playOneRound(playerSelection, computerSelection) {
-  let roundOutome; // Return the outcome of the round
+  let roundOutome; // Display round winner
 
-  // Conditionals for the result, with 3 possible outomes
-  // TODO: Update the "Human: 0" and "Machine: 0" elements
+  // Conditions for winning and update the players' score points
   switch (playerSelection) {
     case "🪨":
       if (computerSelection === "🪨") {
@@ -54,8 +53,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundWinner = "human";
         humanScore++;
       }
-      humanPoints.textContent = `Human: ${humanScore}`
-      machinePoints.textContent = `Human: ${machineScore}`
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
     case "📄":
       if (computerSelection === "🪨") {
@@ -70,8 +69,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundWinner = "machine";
         machineScore++;
       }
-      humanPoints.textContent = `Human: ${humanScore}`
-      machinePoints.textContent = `Human: ${machineScore}`
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
     case "✂️":
       if (computerSelection === "🪨") {
@@ -86,8 +85,8 @@ function playOneRound(playerSelection, computerSelection) {
         roundOutome = "Its a draw";
         roundWinner = "nobody";
       }
-      humanPoints.textContent = `Human: ${humanScore}`
-      machinePoints.textContent = `Human: ${machineScore}`
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
   }
 
@@ -95,22 +94,18 @@ function playOneRound(playerSelection, computerSelection) {
   return roundOutome;
 }
 
-// Find out the winner out of five rounds
+// Gets the winner of the game
 function getsGameWinner() {
-  let gameWinner = ''; // For later return
+  let gameWinner = '';
 
-  // Alerts who the winner is
-  if (humanScore === 5) {
-    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+  if (humanScore === 2) {
     gameWinner = "The winner is the PLAYER";
-  } else if (machineScore === 5) {
-    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+  } else if (machineScore === 2) {
     gameWinner = "The winner is the COMPUTER";
   } else if (humanScore === machineScore) {
-    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
     gameWinner = "This game ended up a DRAW";
   }
-  alert(gameWinner);
+  alert(`\nSCORE\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n${gameWinner}\n\nKeep playing if you like!`);
 }
 
 // Finishes game after 5 rounds
@@ -118,29 +113,28 @@ function resetEntireGame() {
   humanScore = 0;
   machineScore = 0;
   roundWinner = '';
-  alert("Keep playing if you like");
 }
 
-// UI reset for the score and choice emojis
+// UI reset for the score
 function resetGameUI() {
   humanChoice.textContent = '❓';
   computerChoice.textContent = '❓';
-  // TODO: Reset the UI for the scores and choice emojis
+  humanPoints.textContent = "Human: 0";
+  machinePoints.textContent = "Machine: 0";
 }
 
-// Trigger several functions in order to play a round
+// Triggers to play a round
 const cardButtons = document.querySelectorAll('.cardButton');
 cardButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    humanChoice.textContent = button.textContent; // Sets new emoji for human
+    humanChoice.textContent = button.textContent; // Updates UI for human choice
     getComputerPlay(); // Gets value of computer choice
-    playOneRound(humanChoice.textContent, computerChoice.textContent); // Play one round
-    console.log(`\n\tSCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
+    playOneRound(humanChoice.textContent, computerChoice.textContent); // Plays one round
     // Gets the winner and resets the game
-    if (humanScore === 5 || machineScore === 5) {
+    if (humanScore === 2 || machineScore === 2) {
       getsGameWinner(); // Displays the winner
-      // resetEntireGame(); // Zeroes the scores // TODO: Umcomment resetEntireGame when done
-      resetGameUI() // Resets scores and emojis
+      resetEntireGame(); // Zeroes the scores
+      resetGameUI() // Resets the scores and UI
     }
   });
 });
