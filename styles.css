@@ -89,3 +89,8 @@ p, h1 {
 .red-emoji {
     font-size: 90px;
 }
+
+a {
+    color: cyan;
+    font-weight: 450;
+}
