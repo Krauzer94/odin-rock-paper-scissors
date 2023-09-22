@@ -58,10 +58,11 @@ footer h1 {
 /* Options cards */
 .card, button {
     background-color: #393e46;
-    border-style: none;
+    /* border-style: none; */
     border-radius: 20px;
     width: 150px;
     height: 150px;
+    font-size: 85px;
 }
 
 /* Score section */
@@ -85,8 +86,6 @@ p, h1 {
     padding: 24px 0px;
 }
 
-/* Emoji images */
-img {
-    height: 100px;
-    width: 100px;
+.red-emoji {
+    font-size: 90px;
 }

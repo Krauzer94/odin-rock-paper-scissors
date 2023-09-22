@@ -1,116 +1,140 @@
-// Random choices for the computer to play
+// Starting the game
+let humanScore = 0;
+let machineScore = 0;
+let roundWinner = '';
+
+// Emoji elements queries
+const rockButton = document.querySelector('#rock_button'); // 🪨 emoji
+const paperButton = document.querySelector('#paper_button'); // 📄 emoji
+const scissorButton = document.querySelector('#scissor_button'); // ✂️ emoji
+const humanChoice = document.querySelector('#human_choice'); // 1st ❓ emoji
+const computerChoice = document.querySelector('#computer_choice'); // 2nd ❓ emoji
+
+// Score points queries
+const humanPoints = document.querySelector('#human_score'); // Human points
+const machinePoints = document.querySelector('#machine_score') // Machine points
+
+// Computer random choice
 const options = ["Rock", "Paper", "Scissors"];
 const getComputerChoice = () => options[Math.floor(Math.random() * options.length)];
 
-// Take player choice and computer choice in two parameters
-function playRound(playerSelection, computerSelection) {
-  let outcome = ""; // For later text return
-  // Conditionals for the result, there are 3 possible outcomes
+// Gets computer play and updates the UI with it
+function getComputerPlay() {
+  let machinePlay = getComputerChoice();
+  switch (machinePlay) {
+    case "Rock":
+      computerChoice.textContent = "🪨";
+      break;
+    case "Paper":
+      computerChoice.textContent = "📄";
+      break;
+    case "Scissors":
+      computerChoice.textContent = "✂️";
+      break;
+  }
+}
+
+// Play a round and show round winner
+function playOneRound(playerSelection, computerSelection) {
+  let roundOutome; // Display round winner
+
+  // Conditions for winning and update the players' score points
   switch (playerSelection) {
-    case "rock":
-      if (computerSelection === "Rock") {
-        return (outcome = "Its a draw");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "You lose! Paper beats rock");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "You win! Rock beats Scissors");
+    case "🪨":
+      if (computerSelection === "🪨") {
+        roundOutome = "Its a draw";
+        roundWinner = "nobody";
+      } else if (computerSelection === "📄") {
+        roundOutome = "You lose! Paper beats rock";
+        roundOutome = "machine";
+        machineScore++;
+      } else if (computerSelection === "✂️") {
+        roundOutome = "You win! Rock beats Scissors";
+        roundWinner = "human";
+        humanScore++;
       }
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
-    case "raper":
-      if (computerSelection === "Rock") {
-        return (outcome = "You win! Paper beats rock");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "Its a draw");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "You lose! Scissors beats Paper");
+    case "📄":
+      if (computerSelection === "🪨") {
+        roundOutome = "You win! Paper beats rock";
+        roundWinner = "human";
+        humanScore++;
+      } else if (computerSelection === "📄") {
+        roundOutome = "Its a draw";
+        roundWinner = "nobody";
+      } else if (computerSelection === "✂️") {
+        roundOutome = "You lose! Scissors beats Paper";
+        roundWinner = "machine";
+        machineScore++;
       }
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
-    case "scissors":
-      if (computerSelection === "Rock") {
-        return (outcome = "You lose! Rock beats Scissors");
-      } else if (computerSelection === "Paper") {
-        return (outcome = "You win! Scissors beats Paper");
-      } else if (computerSelection === "Scissors") {
-        return (outcome = "Its a draw");
+    case "✂️":
+      if (computerSelection === "🪨") {
+        roundOutome = "You lose! Rock beats Scissors";
+        roundWinner = "machine"
+        machineScore++;
+      } else if (computerSelection === "📄") {
+        roundOutome = "You win! Scissors beats Paper";
+        roundWinner = "human";
+        humanScore++;
+      } else if (computerSelection === "✂️") {
+        roundOutome = "Its a draw";
+        roundWinner = "nobody";
       }
+      humanPoints.textContent = `Human: ${humanScore}`;
+      machinePoints.textContent = `Machine: ${machineScore}`;
       break;
   }
+
+  alert(roundOutome);
+  return roundOutome;
 }
 
-// Find out the winner out of five rounds
-function game(humanScore, machineScore) {
-  let roundCount = 1; // Round loop counter
-  humanScore = 0, machineScore = 0; // Scores
-  let userSelection, randomSelection; // Inputs
+// Gets the winner of the game
+function getsGameWinner() {
+  let gameWinner = '';
 
-  do {
-    // userSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); // user input
-    randomSelection = getComputerChoice(); // random input
-    // console.log(randomSelection); // validation log
-    // console.log(playRound(userSelection, randomSelection));
-    roundCount++;
-
-    switch (userSelection) {
-      case "rock":
-        if (randomSelection === "Rock") {
-          // Its a draw
-          humanScore = humanScore;
-          machineScore = machineScore;
-        } else if (randomSelection === "Paper") {
-          // Computer wins
-          humanScore = humanScore;
-          machineScore++;
-        } else if (randomSelection === "Scissors") {
-          // Player wins
-          humanScore++;
-          machineScore = machineScore;
-        }
-        break;
-      case "raper":
-        if (randomSelection === "Rock") {
-          // Player wins
-          humanScore++;
-          machineScore = machineScore;
-        } else if (randomSelection === "Paper") {
-          // Its a draw
-          humanScore = humanScore;
-          machineScore = machineScore;
-        } else if (randomSelection === "Scissors") {
-          // Computer wins
-          humanScore = humanScore;
-          machineScore++;
-        }
-        break;
-      case "scissors":
-        if (randomSelection === "Rock") {
-          // Computer wins
-          humanScore = humanScore;
-          machineScore++;
-        } else if (randomSelection === "Paper") {
-          // Player wins
-          humanScore++;
-          machineScore = machineScore;
-        } else if (randomSelection === "Scissors") {
-          // Its a draw
-          humanScore = humanScore;
-          machineScore = machineScore;
-        }
-        break;
-    }
-  } while (roundCount <= 5);
-
-  let winner = ""; // For later return
-  // Winner outcome
-  if (humanScore > machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
-    return (winner = "The winner is the PLAYER");
-  } else if (humanScore < machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
-    return (winner = "The winner is the COMPUTER");
+  if (humanScore === 5) {
+    gameWinner = "The winner is the PLAYER";
+  } else if (machineScore === 5) {
+    gameWinner = "The winner is the COMPUTER";
   } else if (humanScore === machineScore) {
-    console.log(`\n\tGAME SCORE\n\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n`);
-    return (winner = "This game ended up a DRAW");
+    gameWinner = "This game ended up a DRAW";
   }
+  alert(`\nSCORE\nHuman: ${humanScore}\nMachine: ${machineScore}\n\n${gameWinner}\n\nKeep playing if you like!`);
 }
 
-console.log(game());
+// Finishes game after 5 rounds
+function resetEntireGame() {
+  humanScore = 0;
+  machineScore = 0;
+  roundWinner = '';
+}
+
+// UI reset for the score
+function resetGameUI() {
+  humanChoice.textContent = '❓';
+  computerChoice.textContent = '❓';
+  humanPoints.textContent = "Human: 0";
+  machinePoints.textContent = "Machine: 0";
+}
+
+// Triggers to play a round
+const cardButtons = document.querySelectorAll('.cardButton');
+cardButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    humanChoice.textContent = button.textContent; // Updates UI for human choice
+    getComputerPlay(); // Gets value of computer choice
+    playOneRound(humanChoice.textContent, computerChoice.textContent); // Plays one round
+    // Gets the winner and resets the game
+    if (humanScore === 5 || machineScore === 5) {
+      getsGameWinner(); // Displays the winner
+      resetEntireGame(); // Zeroes the scores
+      resetGameUI() // Resets the scores and UI
+    }
+  });
+});
