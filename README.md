@@ -1,5 +1,8 @@
 # Odin Rock Paper Scissors
 
+* Course: [The Odin Project - Foundations Course](https://www.theodinproject.com/paths/foundations/courses/foundations)
+* Exercise: [Foundations Course - Project: Rock Paper Scissors](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
+
 ### Introduction
 We’re going to make a simple implementation of grade-school classic “rock paper scissors”. If you don’t know what that is check the [Wikipedia article](https://en.wikipedia.org/wiki/Rock_paper_scissors) or [this](https://www.wikihow.com/Play-Rock,-Paper,-Scissors) detailed step-by-step. For the moment we’re just going to play the game from the browser console, but **we will revisit this project in a later lesson and add a Graphical User Interface with buttons and text**, so don’t forget to keep the code on GitHub!
 
